@@ -1,0 +1,22 @@
+<section class="my-4 w-85 mx-auto">
+  <h1 class="green text-center mb-5">All Brands</h1>
+  <div class="row g-4">
+    <div class="col-md-3 ng-star-inserted" *ngFor="let items of brands">
+      <div
+        class="card"
+      >
+        <div  class="card-img">
+          <img
+
+            alt=""
+            class="img-fluid"
+            [src]="items.image"
+          />
+        </div>
+        <div  class="card-body">
+          <p  class="text-center">{{items.name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
