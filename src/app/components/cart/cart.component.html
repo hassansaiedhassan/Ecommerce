@@ -1,0 +1,51 @@
+<section class="w-75 mx-auto bg-main-light p-3 rounded-3 my-2">
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+  <h1>Shop Cart</h1>
+  <p class="text-mai">
+    Total Price:{{ cartDetails.totalCartPrice | currency : "EGP" }}
+  </p>
+  <div class="row border-bottom pb-2" *ngFor="let item of cartDetails.products">
+    <div class="col-md-1">
+      <!-- img -->
+      <img [src]="item.product.imageCover" class="w-100" alt="" />
+    </div>
+    <div class="col-md-11">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h3 class="h5">{{ item.product.title }}</h3>
+          <p class="text-main m-0">Price :{{ item.price }}</p>
+          <button (click)="removeItem(item.product.id)" class="btn">
+            <i class="fa-regular fa-trash-can text-danger"></i> Remove
+          </button>
+        </div>
+        <div>
+          <button
+            (click)="changeCount(item.product.id, item.count + 1)"
+            class="btn border border-success"
+          >
+            +
+          </button>
+          <span class="m-2">{{ item.count }}</span>
+          <button
+            (click)="changeCount(item.product.id, item.count - 1)"
+            class="btn border border-success"
+          >
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn-main">
+    <a [routerLink]="['/checkOut', cartDetails._id]">
+      onlinePayment <img src="./assets/images/visa-1.svg" alt="" />
+    </a>
+  </button>
+</section>

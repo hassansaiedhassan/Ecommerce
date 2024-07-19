@@ -1,0 +1,60 @@
+<section
+  class="bg-main-light p-4 shadow shadow w-75 align-items-center mx-auto rounded my-3 shadow"
+>
+  <form [formGroup]="CheckOut" (ngSubmit)="handleForm(CheckOut)">
+    <div>
+      <label for="details"> details </label>
+      <textarea
+        id="details"
+        class="form-control"
+        formControlName="details"
+      ></textarea>
+      <div
+        class="alert alert-danger"
+        *ngIf="CheckOut.get('phone')?.touched && CheckOut.get('phone')?.errors"
+      >
+        <p *ngIf="CheckOut.get('phone')?.getError('required')">
+          phone Is required
+        </p>
+      </div>
+    </div>
+    <div>
+      <label for="phone"> phone </label>
+      <input
+        type="tel"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="CheckOut.get('phone')?.touched && CheckOut.get('phone')?.errors"
+      >
+        <p *ngIf="CheckOut.get('phone')?.getError('required')">
+          phone Is required
+        </p>
+        <p *ngIf="CheckOut.get('phone')?.getError('pattern')">
+          accept only egypt phone numbers
+        </p>
+      </div>
+    </div>
+    <div>
+      <label for="details"> details </label>
+      <input
+        type="text"
+        id="city"
+        class="form-control"
+        formControlName="city"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="CheckOut.get('phone')?.touched && CheckOut.get('phone')?.errors"
+      >
+        <p *ngIf="CheckOut.get('phone')?.getError('required')">
+          phone Is required
+        </p>
+      </div>
+    </div>
+    <button class="btn-main mt-3">checkout</button>
+  </form>
+</section>
